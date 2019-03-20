@@ -1,0 +1,41 @@
+{
+  "name": "dropp",
+  "description": "App for sharing files",
+  "version": "1.0",
+  "manifest_version": 2,
+
+  "permissions": [
+    "storage",
+    "webNavigation",
+    "tabs",
+    "activeTab",
+    "debugger",
+    "clipboardWrite",
+    "desktopCapture",
+    "\u003Call_urls>"
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "browser_action": {
+    "default_title": "dropp",
+    "default_popup": "index.html"
+  },
+  "background": {
+    "scripts": [
+      "./js/background.js"
+    ],
+    "persistent": false
+  },
+  "web_accessible_resources": [
+    "assets/*.svg",
+    "assets/*.png",
+    "assets/*.otf"
+  ],
+  "content_scripts": [{
+    "js": [
+      "./js/content-script.js"
+    ],
+    "matches": [
+      "\u003Call_urls>"
+    ]
+  }]
+}
